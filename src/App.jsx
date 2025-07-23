@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
+import Nav from './components/Nav'
+import Home from './components/Home'
+import Login from './components/Login'
+import Subway from './components/Subway'
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div className='bg-amber-100'>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <div className='w-full xl:w-8/10 h-screen mx-auto
+                    flex flex-col justify-start items-start'>
+        <Nav />  
+        <main className='w-full flex-grow
+            overflow-y-auto py-10
+            flex flex-col justify-start items-center'>
+              <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/login' element={<Login />}></Route>
+                <Route path='/subway' element={<Subway />}></Route>
+              </Routes>
+        </main>
+        <footer className='w-full min-h-20
+           bg-black text-amber-50
+            flex justify-center items-center'>
+          K-digital 2025 2기      
+      </footer>
+    </div>
+    </BrowserRouter>
   )
 }
 
