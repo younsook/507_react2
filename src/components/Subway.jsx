@@ -9,21 +9,33 @@ export default function Subway() {
   const [timeDate, setTimeDate] = useState([]);
 
   const selRef = useRef();
-  const sareaCode = sarea.map(item => item["코드"]);
-  const sareaArea = sarea.map(item => item["측정소"]);
-  
-  const today = new Date().toISOString().slice(0,10).replaceAll("-","");
+  const sareaCode = sarea.map(item => item["코드"]); //TailSelect 를 사용하기 위해 분리해서 가져옴
+  const sareaArea = sarea.map(item => item["측정소"]); //TailSelect 를 사용하기 위해 분리해서 가져옴
+  const today = new Date().toISOString().slice(0,10).replaceAll("-",""); //날짜별로 쭉 가져옴.
+
+
   console.log(today)
 
   const getFetchData = async()=>{
     const apiKey = import.meta.env.VITE_DATA_API; 
-    const baseUrl = `https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByItem?serviceKey=${apiKey}&pageNo=12&numOfRows=5&resultType=json&controlnumber=${today}&areaIndex=${selRef.current.value}`
+    //const baseUrl = `https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByItem?serviceKey=${apiKey}&pageNo=12&numOfRows=5&resultType=json&areaIndex=${selRef.current.value}`
+    //const baseUrl = `https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByItem?serviceKey=${apiKey}&pageNo=12&numOfRows=5&resultType=json&controlnumber=${today}&areaIndex=${selRef.current.value}`
+    const baseUrl = 
+                        `https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByItem` +
+                        `?serviceKey=${apiKey}` +
+                        `&pageNo=12` +
+                        `&numOfRows=5` +
+                        `&resultType=json` +
+                        `&controlnumber=${today}` +
+                        `&areaIndex=${selRef.current.value}`;
+
     
     //let url = `${url}`
-    console.log(baseUrl)
+    console.log("1. baseUrl :",baseUrl)
 
     const res = await fetch(baseUrl);
     const json = await res.json();
+    console.log("응답 내용:", json);
 
     //const items = json.response.body.items;
     const items = json.response.body.items?.item ?? [];
@@ -38,15 +50,23 @@ export default function Subway() {
     getFetchData();
   }
 
-  tdata.forEach(item => {
-  console.log("✔", `${item.controlnumber}-${item.item}`);
-});
+
 
   useEffect(()=>{
     //시간만 뽑아서 배열을 만듬
     let tm = [];
-    tm = tdata.map(item => item.controlnumber);
+    tm = tdata.map(item => item.controlnumber); // 전체 시간 추출
+    console.log("tdata : ", tdata) 
+    console.log("시간정렬 : ", tm)
     tm.sort();
+
+    ////
+      tdata.forEach(item => {
+      console.log("✔여기가달라야..", `${item.controlnumber}-${item.item}`);
+
+
+      });
+    ////
 
     let tmData =[];
     tmData = tm.map(item => tdata.filter(titem => titem.controlnumber == item)[0])
@@ -64,13 +84,16 @@ export default function Subway() {
                         handleSel = {handleSelect}
                         dText="--측정소 선택--"
                         opv={sareaCode}
-                        opt={sareaArea}          />
+                        opt={sareaArea} />
         </div>
         
       </div>
       <div>
-        {timeDate.map((item) => (
-          <SubwayBox key={`${item.controlnumber}-${item.item}`} item={item} />
+        {timeDate.map((item, idx) => (
+          <SubwayBox key={`${item.controlnumber}-${item.site}-${idx}`} 
+                      item={item} 
+                      itemCode={item.item}
+                      value={item.val}/>
         ))}
       </div>
     </div>

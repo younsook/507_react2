@@ -30,9 +30,15 @@ export default function Nav() {
 
                     { login &&  <Link to="/subway">
                       <li className='px-2 space-x-4 rounded-xl hover:bg-green-800 hover:text-white'>
-                        지하철 대기정보
+                        대기정보
                       </li>
                       </Link> }
+
+                      <Link to="/rest">
+                      <li className='px-2 space-x-4 rounded-xl hover:bg-green-800 hover:text-white'>
+                        json
+                      </li>
+                      </Link>
                 </ul>
             </div>
             <div className='mr-10 text-sm font-bold p-5 border bg-green-600 rounded-2xl text-white'>

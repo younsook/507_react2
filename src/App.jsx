@@ -6,6 +6,8 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Login from './components/Login'
 import Subway from './components/Subway'
+import Rest from './components/Rest'
+
 function App() {
 
 
@@ -21,6 +23,7 @@ function App() {
                 <Route path='/' element={<Home />}></Route>
                 <Route path='/login' element={<Login />}></Route>
                 <Route path='/subway' element={<Subway />}></Route>
+                <Route path='/rest' element={<Rest />}></Route>
               </Routes>
         </main>
         <footer className='w-full min-h-20
