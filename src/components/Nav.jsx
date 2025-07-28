@@ -2,16 +2,18 @@
 import viteLogo from '/vite.svg' //이미지표현 2가지방법
 import reactLogo from '../assets/react.svg' //이미지표현 2가지방법
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAtom } from 'jotai'
 import { isLogin } from '../atoms/IsLoginAtom'
 
 export default function Nav() {
   const [login, seLogin] = useAtom(isLogin);
+  const navigation = useNavigate();
 
   const handleLogout = () =>{
     seLogin(false);
     localStorage.removeItem("id");
+    navigation("/");
   }
   return (
    
@@ -28,17 +30,25 @@ export default function Nav() {
                       </li>
                       </Link>
 
-                    { login &&  <Link to="/subway">
+                    { login &&  
+                      <Link to="/subway">
                       <li className='px-2 space-x-4 rounded-xl hover:bg-green-800 hover:text-white'>
                         대기정보
                       </li>
                       </Link> }
 
-                      <Link to="/rest">
+                      {/* <Link to="/rest">
                       <li className='px-2 space-x-4 rounded-xl hover:bg-green-800 hover:text-white'>
-                        json
+                        Axios
                       </li>
-                      </Link>
+                      </Link> */}
+                      
+                    { login &&
+                      <Link to="/todolist">
+                      <li className='px-2 space-x-4 rounded-xl hover:bg-green-800 hover:text-white'>
+                        TodoList
+                      </li>
+                      </Link>}
                 </ul>
             </div>
             <div className='mr-10 text-sm font-bold p-5 border bg-green-600 rounded-2xl text-white'>

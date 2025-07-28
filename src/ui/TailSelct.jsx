@@ -15,7 +15,7 @@ export default function TailSelct({selRef, handleSel, dText, opv, opt}) {
 
                  <option value="" >{dText}</option>
                 {
-                    opv.map((item, idx) => 
+                    opv && opt && opv.map((item, idx) => 
                     <option key={item} 
                             value={item}>
                         {opt[idx]}

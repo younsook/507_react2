@@ -17,11 +17,11 @@ export default function Login() {
     //   alert('비밀번호를 입력하세요.');
     //   return;
     // }
-    if(emailRef.current.value != "hodu0622@naver.com"){
+    if(emailRef.current.value != "h@naver.com"){
       alert('아이디가 존재하지 않습니다.');
       return;
     }
-    if(pwdRef.current.value != "1234"){
+    if(pwdRef.current.value != "1111"){
       alert('비밀번호가 일치하지 않습니다.');
       return;
     }
