@@ -29,9 +29,9 @@ export default function TodoForm({addTodo}) {
         txtRef.current.focus();
     }, []);
   return (
-    <div className="w-full p-4 bg-amber-100">
+    <div className="w-full p-4 bg-gray-100">
         <div className="w-full flex justify-center items-center text-2xl">TodoList</div>
-        <form className="p-2 w-full grid grid-cols-5 gap-4 items-center bg-amber-50">
+        <form className="p-2 w-full grid grid-cols-5 gap-4 items-center">
             <select
                 id="sel1"
                  ref={selRef}
@@ -44,7 +44,7 @@ export default function TodoForm({addTodo}) {
                         
             <input type="text" 
                     ref={txtRef}
-                    id = 'txt1' className="h-[42px] border rounded-lg px-3 py-2 text-sm text-gray-700 
+                    id = 'txt1' className="col-span-2 h-[42px] border rounded-lg px-3 py-2 text-sm text-gray-700 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </input>
     

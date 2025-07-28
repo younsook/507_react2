@@ -3,7 +3,7 @@ import TailButton from "../ui/TailButton";
 export default function TodoItem({item, onDelete, onToggle}) {
   return (
     <div className="w-full h-[60px] p-1 flex justify-between items-center border
-                         border-b-blue-300 my-0.5
+                         border-gray-300 my-0.5 rounded-lg
                             ">
       
       {/* line-through 취소선 */}
@@ -22,7 +22,7 @@ export default function TodoItem({item, onDelete, onToggle}) {
       <div>
        <TailButton         
                             caption="삭제" 
-                            color="oreange" 
+                            color="lime" 
                             onHandle={()=>onDelete(item.id)} /> 
         </div>
     

@@ -14,7 +14,7 @@ export default function TailButton({caption, color, onHandle}) {
     }
   return (
         //mx-2 좌우 마진 8px, my-2 상하 마진 8px, m-2 전체 방향 마진 8px (각 방향)
-      <button className={`mx-2 my-2 p-4 rounded-xl text-white
+      <button className={`mx-2 my-1 p-2.5 rounded-xl text-white
             hover:cursor-pointer hover:font-bold bg-blue-500
              ${bg[color]} ${bgHover[color]}`}
              onClick={onHandle}>

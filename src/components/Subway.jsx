@@ -31,22 +31,22 @@ export default function Subway() {
 
     
     //let url = `${url}`
-    console.log("1. baseUrl :",baseUrl)
+    console.log("2. baseUrl :",baseUrl)
 
     const res = await fetch(baseUrl);
     const json = await res.json();
-    console.log("응답 내용:", json);
+    console.log("3.fetch 응답내용:", json);
 
     //const items = json.response.body.items;
     const items = json.response.body.items?.item ?? [];
 
-    console.log("fetch 가져온 배열:", items); // 콘솔에서 확인
+    console.log("4fetch 가져온 배열:", items); // 콘솔에서 확인
 
     setTdata(items); // 상태에 저장
 
   }
   const handleSelect =()=>{
-    console.log("선택된 측정소 코드:",selRef.current.value);
+    console.log("1선택된 측정소 코드:",selRef.current.value);
     getFetchData();
   }
 
