@@ -9,7 +9,7 @@ export default function TodoItem({item, onDelete, onToggle}) {
       {/* line-through 취소선 */}
         <div onClick={()=> onToggle(item.id, item.completed)}>
         {
-            item.completed == "X" ? "□" : "■"
+            item.completed == "X" ? "□" : "🗹"
         }
         </div>
       <span
@@ -25,6 +25,7 @@ export default function TodoItem({item, onDelete, onToggle}) {
                             color="lime" 
                             onHandle={()=>onDelete(item.id)} /> 
         </div>
+        
     
     </div>
   )

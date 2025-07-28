@@ -29,8 +29,8 @@ export default function TodoForm({addTodo}) {
         txtRef.current.focus();
     }, []);
   return (
-    <div className="w-full p-4 bg-gray-100">
-        <div className="w-full flex justify-center items-center text-2xl">TodoList</div>
+    <div className="w-full p-4 bg-gray-100 rounded-lg">
+        <div className="w-full flex justify-center items-center text-2xl ">TodoList</div>
         <form className="p-2 w-full grid grid-cols-5 gap-4 items-center">
             <select
                 id="sel1"
